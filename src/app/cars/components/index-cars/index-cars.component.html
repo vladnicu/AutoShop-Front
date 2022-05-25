@@ -1,1 +1,7 @@
-<p>index-cars works! TEst</p>
+<h1>Index Cars</h1>
+<button (click)="createCar()">Create Car</button>
+
+<p *ngFor="let car of cars">
+  {{ car.id }} - {{ car.brand }} - {{ car.model }}
+  <button (click)="deleteCar(car)">DELETE CAR</button>
+</p>
