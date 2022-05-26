@@ -37,8 +37,8 @@ export class IndexCarsComponent implements OnInit {
   deleteCar(car: ICar) {
     this.carService.deleteCar(car.id).subscribe(
       res => {
-        const carIndex = this.cars?.indexOf(car);
-        this.cars?.splice(carIndex, 1);
+        const carIndex = this.cars.indexOf(car);
+        this.cars.splice(carIndex, 1);
       }
     )
   }
