@@ -20,4 +20,8 @@ export class CarService {
   deleteCar(id: number | undefined): Observable<ICar> {
     return this.http.delete<ICar>('http://tmsv00007:2222' + '/cars/' + id);
   }
+
+  getCar(id: number): Observable<ICar> {
+    return this.http.get<ICar>('http://tmsv00007:2222' + `/cars/${id}`);
+}
 }

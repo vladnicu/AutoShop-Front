@@ -3,5 +3,14 @@
 
 <p *ngFor="let car of cars">
   {{ car.id }} - {{ car.brand }} - {{ car.model }}
+  <button (click)="showCar(car)">SHOW CAR</button>
   <button (click)="deleteCar(car)">DELETE CAR</button>
 </p>
+
+<ag-grid-angular
+  style="width: 100%; height: 500px"
+  class="ag-theme-alpine"
+  [rowData]="cars"
+  [columnDefs]="columnDefs"
+>
+</ag-grid-angular>

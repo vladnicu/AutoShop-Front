@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CarsRoutingModule } from './cars-routing.module';
 import { IndexCarsComponent } from './components/index-cars/index-cars.component';
 import { ShowCarComponent } from './components/show-car/show-car.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ShowCarComponent } from './components/show-car/show-car.component';
 
   imports: [
     CommonModule,
-    CarsRoutingModule
+    CarsRoutingModule,
+    AgGridModule
   ]
 })
 export class CarsModule { }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService } from '../../services/car.service';
 import { ICar } from '../../models/car';
+import { ColDef } from 'ag-grid-community';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-index-cars',
@@ -11,7 +13,18 @@ export class IndexCarsComponent implements OnInit {
 
   cars: ICar[] = [];
 
-  constructor(private carService: CarService) { }
+  columnDefs: ColDef[] = [
+    { field: 'id', filter: true, sortable: true  },
+    { field: 'brand', filter: true },
+    { field: 'model' },
+    { field: 'model' },
+    { field: 'buildYear' },
+    { field: 'stock' },
+
+];
+
+
+  constructor(private carService: CarService, private router: Router) { }
 
   ngOnInit(): void {
     this.carService.getCars().subscribe(
@@ -23,8 +36,8 @@ export class IndexCarsComponent implements OnInit {
 
   createCar() {
     const car: ICar = {
-      brand: 'BMW',
-      model: 'x6',
+      brand: 'VW',
+      model: '343',
       buildYear: 2022,
       stock: 3
     };
@@ -41,6 +54,10 @@ export class IndexCarsComponent implements OnInit {
         this.cars.splice(carIndex, 1);
       }
     )
+  }
+
+  showCar(car: ICar) {
+    this.router.navigate([`/cars/${car.id}`]);
   }
 
 }

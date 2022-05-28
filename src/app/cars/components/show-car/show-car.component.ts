@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ICar } from '../../models/car';
+import { CarService } from '../../services/car.service';
 
 @Component({
   selector: 'app-show-car',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowCarComponent implements OnInit {
 
-  constructor() { }
+  car: ICar | undefined;
+
+  constructor(private route: ActivatedRoute, private carService: CarService) { }
 
   ngOnInit(): void {
+    // get car
+    this.getCar();
+  }
+
+  getCar() {
+    const id = this.route.snapshot.params['id'];
+    this.carService.getCar(id).subscribe(
+      response => this.car = response
+    )
   }
 
 }
